@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <cmath>
 
-double minkowski_distance(std::int16_t p, std::array<double,2> v1, std::array<double,2> v2)
+double minkowski_distance(std::int16_t p, const std::array<double,2>& v1, const std::array<double,2>& v2)
 {
 	/*
 	 * Computes the Minkowski distance between two 2D vectors,
@@ -16,9 +16,9 @@ double minkowski_distance(std::int16_t p, std::array<double,2> v1, std::array<do
 
 	double norm = 0;
 
-	for (int i{}; i < v1.size(); i++) {
-		norm += std::pow(std::abs(v1[i]-v2[i]), p);
+	for (std::size_t i{}; i < v1.size(); i++) {
+		norm += std::pow(std::fabs(v1[i]-v2[i]), p);
 	}
     
-	return std::pow(norm, ((1)/(double)p));
+	return std::pow(norm, 1.0/p);
 }

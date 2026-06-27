@@ -4,6 +4,6 @@
 #include <array>
 #include <cstdint>
 
-double minkowski_distance(std::uint16_t p, std::array<double,2> v1, std::array<double,2> v2);
+double minkowski_distance(std::int16_t p, const std::array<double,2>& v1, const std::array<double,2>& v2);
 
 #endif
