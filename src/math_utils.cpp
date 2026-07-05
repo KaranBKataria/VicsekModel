@@ -14,9 +14,9 @@ double minkowski_distance(std::int16_t p, const std::array<double,2>& v1, const 
 
 	assert(p >= 1);
 
-	double norm = 0;
+  	double norm{};
 
-	for (std::size_t i{}; i < v1.size(); i++) {
+	for (std::size_t i{}; i < v1.size(); ++i) {
 		norm += std::pow(std::fabs(v1[i]-v2[i]), p);
 	}
     

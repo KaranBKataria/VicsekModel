@@ -3,6 +3,6 @@
 
 #include <array>
 
-double vicsek_model(double delta_t, std::array<double,2> position);
+class VicsekParticle;
 
 #endif

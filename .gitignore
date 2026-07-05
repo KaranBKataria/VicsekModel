@@ -1,3 +1,6 @@
 # Ignore build artifacts
 build/
 *.o
+
+# Ignore Python venv
+.venv/
