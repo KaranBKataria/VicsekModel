@@ -7,6 +7,7 @@ This source file implements the Vicsek model.
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 
 // State struct of a single particle in the system at a given point in time
 struct Particle 
@@ -18,8 +19,8 @@ struct Particle
 // Enable periodic boundary conditions on a square centered on (0,0) (default)
 void periodic_boundaries(
     std::span<double, 2> particle, 
-    const double xlim_abs = 1.0, 
-    const double ylim_abs = 1.0
+    const double xlim_abs, 
+    const double ylim_abs
     )
 {
     // Check horizontal boundary
@@ -47,14 +48,16 @@ void periodic_boundaries(
 void vicsek_model(
     std::span<Particle> particles, 
     const double delta_t, 
-    const unsigned int num_steps, 
+    const u_int32_t num_steps, 
     const double velocity, 
-    const double radius
+    const double radius,
+    const double xlim_abs = 1.0,
+    const double ylim_abs = 1.0
     )
 {
     // Need to add exceptions here for input args
 
-    for (int t{0}; t < num_steps; ++t)
+    for (u_int32_t t{0}; t < num_steps; ++t)
     {
         for (auto& particle : particles)
         {
@@ -65,7 +68,7 @@ void vicsek_model(
             particle.pos[1] += velocity * delta_t * std::sin(theta);
 
             // PBC
-            periodic_boundaries(particle.pos);
+            periodic_boundaries(particle.pos, xlim_abs, ylim_abs);
         }
     }
 }
