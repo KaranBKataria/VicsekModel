@@ -4,3 +4,6 @@ build/
 
 # Ignore Python venv
 .venv/
+
+# Ignore configs
+.vscode/

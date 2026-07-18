@@ -4,6 +4,6 @@
 #include <cstdint>
 #include <span>
 
-double minkowski_distance(std::int16_t p, std::span<double> v1, std::span<double> v2);
+double minkowski_distance(std::int16_t p, std::span<const double> v1, std::span<const double> v2);
 
 #endif

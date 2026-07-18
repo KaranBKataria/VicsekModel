@@ -6,32 +6,67 @@ This source file implements the Vicsek model.
 
 #include <array>
 #include <cmath>
+#include <cstddef>
 
-class VicsekParticle
+// State struct of a single particle in the system at a given point in time
+struct Particle 
 {
-    private:
-
-        // Position at time t
-        double m_x{}, m_y{};
-
-        // Velocity at time t
-        double v_x{}, v_y{};
-
-        // Velocity angle at time t
-        double velocity_direction{};
-
-        double angle_step(double delta_t, std::array<double,2> position);
-
-        double position_step(double delta_t, double dist);
-
-    public:
-
-        // position and velocity vectors at time t
-        std::array<double,2> m_pos{m_x, m_y};
-        std::array<double,2> m_vel{v_x, v_y};
-
-        VicsekParticle(double x, double y, double vx, double vy, double vel_dir) : m_x{ x }, m_y{ y }, v_x{ vx }, v_y{ vy }, velocity_direction{ vel_dir }
-		{}
-
-        double vicsek_step(double delta_t, std::array<double,2> position);
+    std::array<double, 2> pos;
+    double angle;
 };
+
+// Enable periodic boundary conditions on a square centered on (0,0) (default)
+void periodic_boundaries(
+    std::span<double, 2> particle, 
+    const double xlim_abs = 1.0, 
+    const double ylim_abs = 1.0
+    )
+{
+    // Check horizontal boundary
+    if (particle[0] > xlim_abs)
+    {
+        particle[0] = particle[0] - 2 * xlim_abs;
+    }
+    else if (particle[0] < -xlim_abs)
+    {
+        particle[0] = particle[0] + 2 * xlim_abs;
+    }
+
+    // Check vertical boundary
+    if (particle[1] > ylim_abs)
+    {
+        particle[1] = particle[1] - 2 * ylim_abs;
+    }
+    else if (particle[1] < -ylim_abs)
+    {
+        particle[1] = particle[1] + 2 * ylim_abs;
+    }
+}
+
+// Vicsek model for swarm dynamics
+void vicsek_model(
+    std::span<Particle> particles, 
+    const double delta_t, 
+    const unsigned int num_steps, 
+    const double velocity, 
+    const double radius
+    )
+{
+    // Need to add exceptions here for input args
+
+    for (int t{0}; t < num_steps; ++t)
+    {
+        for (auto& particle : particles)
+        {
+            double theta{particle.angle};
+
+            // Update particle position
+            particle.pos[0] += velocity * delta_t * std::cos(theta);
+            particle.pos[1] += velocity * delta_t * std::sin(theta);
+
+            // PBC
+            periodic_boundaries(particle.pos);
+        }
+    }
+}
+

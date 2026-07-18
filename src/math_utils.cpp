@@ -1,11 +1,11 @@
 #include "../include/math_utils.h"
 
-#include <array>
 #include <cassert>
 #include <cstdint>
 #include <cmath>
+#include <span>
 
-double minkowski_distance(std::int16_t p, const std::array<double,2>& v1, const std::array<double,2>& v2)
+double minkowski_distance(std::int16_t p, std::span<const double> v1, std::span<const double> v2)
 {
 	/*
 	 * Computes the Minkowski distance between two 2D vectors,
@@ -13,6 +13,7 @@ double minkowski_distance(std::int16_t p, const std::array<double,2>& v1, const 
 	 */
 
 	assert(p >= 1);
+	assert(v1.size() == v2.size());
 
   	double norm{};
 
