@@ -4,6 +4,14 @@
 #include <cstdint>
 #include <span>
 
-double minkowski_distance(std::int16_t p, std::span<const double> v1, std::span<const double> v2);
+/*
+* Computes the Minkowski distance between two 2D spans
+* (default 2-norm).
+*/
+double minkowski_distance(
+	std::span<const double, 2> v1,
+	std::span<const double, 2> v2,
+	std::int16_t p = 2
+);
 
 #endif
