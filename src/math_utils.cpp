@@ -13,7 +13,7 @@
 double minkowski_distance(
 	std::span<const double, 2> v1,
 	std::span<const double, 2> v2,
-	std::int16_t p = 2
+	const std::int16_t& p = 2
 	)
 {
 	/*

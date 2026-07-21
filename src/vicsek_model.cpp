@@ -22,8 +22,8 @@ struct Particle
 
 void periodic_boundaries(
     std::span<double, 2> particle_pos,
-    const double xlim_abs,
-    const double ylim_abs
+    const double& xlim_abs,
+    const double& ylim_abs
     )
 {
     /*
@@ -55,12 +55,12 @@ void periodic_boundaries(
 
 void vicsek_model(
     std::span<Particle> particles, 
-    const double delta_t, 
-    const u_int32_t num_steps, 
-    const double velocity, 
-    const double radius,
-    const double xlim_abs = 1.0,
-    const double ylim_abs = 1.0
+    const double& delta_t, 
+    const u_int32_t& num_steps, 
+    const double& velocity, 
+    const double& radius,
+    const double& xlim_abs = 1.0,
+    const double& ylim_abs = 1.0
     )
 {
     /* 
