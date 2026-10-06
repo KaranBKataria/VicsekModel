@@ -15,14 +15,14 @@ void vm::simulation(
     for (int t{1}; t < timesteps + 1; ++t)
     {
         std::cout << "Time t = " << t << "\n";
-        std::cout << "-----------------------" <<"\n";
+        std::cout << "-----------------------\n";
 
         for (auto& p : particles)
         {
             vm::angleStep(p, particles, radius);
             vm::positionStep(p, grid, speed, del_t);
 
-            std::cout << "Position = (" << p.x << ", " << p.y << ")" << "\n";
+            std::cout << "Position = (" << p.x << ", " << p.y << ")\n";
             std::cout << "Angle = " << p.angle << "\n\n";
         }
     }
