@@ -12,7 +12,7 @@ void vm::simulation(
     const double speed,
     const double radius)
 {
-    for (int t{}; t < timesteps; ++t)
+    for (int t{1}; t < timesteps + 1; ++t)
     {
         std::cout << "Time t = " << t << "\n";
         std::cout << "-----------------------" <<"\n";

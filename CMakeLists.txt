@@ -3,7 +3,7 @@ project(VicsekModel)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(VicsekModel src/main.cpp
+add_executable(${PROJECT_NAME} src/main.cpp
         include/particle.h
         src/vicsekStep.cpp
         include/vicsekStep.h
