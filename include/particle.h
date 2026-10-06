@@ -2,9 +2,11 @@
 #define PARTICLE_H
 
 namespace vm {
-    struct ParticleConfiguration
+    struct ParticleConfiguration2D
     {
-        double x, y, angle;
+        double x{};
+        double y{};
+        double angle{};
     };
 }
 

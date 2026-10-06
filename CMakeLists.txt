@@ -9,5 +9,6 @@ add_executable(VicsekModel src/main.cpp
         include/vicsekStep.h
         src/Simulation.cpp
         include/Simulation.h
-        src/periodicBoundaries.cpp
-        include/periodicBoundaries.h)
+        include/stateSpace.h
+        include/utils.h
+)
