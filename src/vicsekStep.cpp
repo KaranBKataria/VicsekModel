@@ -10,7 +10,7 @@ void vm::positionStep(
     const double del_t
     )
 {
-    const double speedTime = speed * del_t;
+    const double speedTime{ speed * del_t };
 
     // Update particle position
     particle.x += speedTime * std::cos(particle.angle);
@@ -26,7 +26,8 @@ void vm::angleStep(
     const double radius
     )
 {
-    double acc{ 0.0 };
+    double acc{ particle.angle };
+    int neighbourCount{ 1 };
 
     // Naive implementation O(n)
     for (const auto& [x, y, angle] : particles)
@@ -34,8 +35,9 @@ void vm::angleStep(
         if (std::hypot(x - particle.x, y - particle.y) < radius)
         {
             acc += angle;
+            ++neighbourCount;
         }
     }
 
-    particle.angle = acc / static_cast<double>(particles.size());
+    particle.angle = acc / static_cast<double>(neighbourCount);
 }
