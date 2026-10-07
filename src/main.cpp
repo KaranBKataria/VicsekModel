@@ -1,5 +1,5 @@
-#include "../include/simulation.h"
-#include "../include/stateSpace.h"
+#include "simulation.h"
+#include "stateSpace.h"
 
 #include <vector>
 #include <numbers>
