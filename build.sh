@@ -4,7 +4,6 @@ if ! [[ -f "./build/" ]]; then
   mkdir ./build
 fi
 
-cd ./build
-cmake .. || exit 1
-make
+cmake --build build || exit 1
+cd .build/ && make
 
