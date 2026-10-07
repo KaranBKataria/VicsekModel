@@ -9,10 +9,11 @@ int main(int argc, char* argv[])
     using std::numbers::pi;
 
     constexpr int N{ 2 };
-    constexpr int TIMESTEPS { 1'000 };
-    constexpr double DEL_T { 0.5 };
-    constexpr double SPEED { 1.0 };
-    constexpr double RADIUS { 0.5 };
+    constexpr double DEL_T{ 0.5 };
+    constexpr double MAX_T{ 100.0 };
+    constexpr int TIMESTEPS{ static_cast<int>(MAX_T / DEL_T) };
+    constexpr double SPEED{ 1.0 };
+    constexpr double RADIUS{ 0.5 };
     const vm::StateSpace2D GRID{ 20.0, 20.0 };
 
     std::vector<vm::ParticleConfiguration2D> particles;
