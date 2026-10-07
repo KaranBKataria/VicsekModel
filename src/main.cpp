@@ -9,8 +9,8 @@ int main(int argc, char* argv[])
     using std::numbers::pi;
 
     constexpr int N{ 2 };
-    constexpr double DEL_T{ 0.5 };
-    constexpr double MAX_T{ 100.0 };
+    constexpr double DEL_T{ 0.1 };   // 0.1s increments
+    constexpr double MAX_T{ 600.0 }; // 10 min timescale
     constexpr int TIMESTEPS{ static_cast<int>(MAX_T / DEL_T) };
     constexpr double SPEED{ 1.0 };
     constexpr double RADIUS{ 0.5 };
