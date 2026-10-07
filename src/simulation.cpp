@@ -1,6 +1,6 @@
-#include "../include/simulation.h"
-#include "../include/vicsekStep.h"
-#include "../include/stateSpace.h"
+#include "simulation.h"
+#include "vicsekStep.h"
+#include "stateSpace.h"
 
 #include <iostream>
 
