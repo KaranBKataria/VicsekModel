@@ -1,5 +1,5 @@
-#include "../include/vicsekStep.h"
-#include "../include/stateSpace.h"
+#include "vicsekStep.h"
+#include "stateSpace.h"
 
 #include <cmath>
 
