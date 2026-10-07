@@ -2,6 +2,7 @@
 #include "stateSpace.h"
 
 #include <cmath>
+#include <iostream>
 
 void vm::positionStep(
     vm::ParticleConfiguration2D& particle,
@@ -26,8 +27,8 @@ void vm::angleStep(
     const double radius
     )
 {
-    double acc{ particle.angle };
-    int neighbourCount{ 1 };
+    double acc{};
+    int neighbourCount{};
 
     // Naive implementation O(n)
     for (const auto& [x, y, angle] : particles)
