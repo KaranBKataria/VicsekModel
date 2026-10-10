@@ -16,7 +16,7 @@ jobs:
     - name: Install CMake
       uses: ssrobins/install-cmake@v1
       with:
-        version: 4.3
+        version: 4.3.0
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build
