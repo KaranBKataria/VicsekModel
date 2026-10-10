@@ -39,7 +39,7 @@ void vm::simulation::setUpConfiguration(
     std::uniform_real_distribution spatial_dist_y(-ylim, ylim);
     std::uniform_real_distribution angle_dist(0.0, 2.0 * pi);
 
-    for (std::size_t i{}; i < particles.size(); ++i)
+    for (std::size_t i{}; i < particles.capacity(); ++i)
     {
         particles.emplace_back(
             spatial_dist_x(gen),
