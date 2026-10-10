@@ -2,7 +2,6 @@
 #include "stateSpace.h"
 
 #include <cmath>
-#include <iostream>
 
 void vm::positionStep(
     vm::ParticleConfiguration2D& particle,
