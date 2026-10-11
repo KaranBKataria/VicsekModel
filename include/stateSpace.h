@@ -7,20 +7,16 @@ namespace vm
 {
     class StateSpace2D
     {
-        public:
-            [[nodiscard]] consteval StateSpace2D() = default;
-            [[nodiscard]] consteval StateSpace2D(const double x, const double y) : x_{x}, y_{y} {}
+        // Default is 1.0 x 1.0 grid
+        double x_{ 1.0 };
+        double y_{ 1.0 };
 
-            void pbc(vm::ParticleConfiguration2D& particle) const;
+    public:
+        StateSpace2D() = default;
+        StateSpace2D(const double x, const double y) : x_{x}, y_{y} {}
 
-        private:
-            // Default is 1.0 x 1.0 grid
-            double x_{ 1.0 };
-            double y_{ 1.0 };
-    };
-
-    inline void StateSpace2D::pbc(vm::ParticleConfiguration2D& particle) const
-    {
+        void pbc(vm::ParticleConfiguration2D& particle) const
+        {
             particle.x = vm::utils::wrap<double>(
                 particle.x,
                 -x_,
@@ -30,7 +26,8 @@ namespace vm
                 particle.y,
                 -y_,
                 y_);
-    }
+        }
+    };
 }
 
 
