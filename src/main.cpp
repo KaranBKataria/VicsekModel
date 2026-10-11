@@ -6,7 +6,7 @@
 int main(int argc, char* argv[])
 {
     // Specify simulation configuration
-    constexpr int N{ 50 };
+    constexpr int N{ 100 };
     constexpr double DEL_T{ 0.1 };   // 0.1s increments
     constexpr double MAX_T{ 600.0 }; // 10 min timescale
     constexpr int TIMESTEPS{ static_cast<int>(MAX_T / DEL_T) };

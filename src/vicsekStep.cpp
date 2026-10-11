@@ -49,5 +49,5 @@ void vm::angleStep(
     }
 
     particle.angle = (acc / static_cast<double>(neighbourCount)) + whiteNoise(gen);
-    particle.angle = vm::utils::wrap<double>(particle.angle, 0, 2 * pi);
+    particle.angle = vm::utils::wrap(particle.angle, 0.0, 2.0 * pi);
 }
