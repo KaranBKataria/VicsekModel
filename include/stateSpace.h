@@ -12,8 +12,8 @@ namespace vm
         double y_{ 1.0 };
 
     public:
-        StateSpace2D() = default;
-        StateSpace2D(const double x, const double y) : x_{x}, y_{y} {}
+        constexpr StateSpace2D() = default;
+        constexpr StateSpace2D(const double x, const double y) : x_{x}, y_{y} {}
 
         void pbc(vm::ParticleConfiguration2D& particle) const
         {

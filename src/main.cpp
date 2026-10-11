@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     constexpr double XLIM{ 5.0 };
     constexpr double YLIM{ 5.0 };
 
-    const vm::StateSpace2D GRID{ XLIM, YLIM };
+    constexpr vm::StateSpace2D GRID{ XLIM, YLIM };
     std::vector<vm::ParticleConfiguration2D> particles;
     particles.reserve(N);
 
