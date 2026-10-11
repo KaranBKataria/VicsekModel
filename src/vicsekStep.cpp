@@ -1,7 +1,10 @@
 #include "vicsekStep.h"
 #include "stateSpace.h"
+#include "utils.h"
 
 #include <cmath>
+#include <random>
+#include <numbers>
 
 void vm::positionStep(
     vm::ParticleConfiguration2D& particle,
@@ -26,8 +29,14 @@ void vm::angleStep(
     const double radius
     )
 {
+    using std::numbers::pi;
+
     double acc{};
     int neighbourCount{};
+
+    static std::random_device rd{};
+    static std::mt19937 gen(rd());
+    static std::normal_distribution whiteNoise(0.0, 0.1);
 
     // Naive implementation O(n)
     for (const auto& [x, y, angle] : particles)
@@ -39,5 +48,6 @@ void vm::angleStep(
         }
     }
 
-    particle.angle = acc / static_cast<double>(neighbourCount);
+    particle.angle = (acc / static_cast<double>(neighbourCount)) + whiteNoise(gen);
+    particle.angle = vm::utils::wrap<double>(particle.angle, 0, 2 * pi);
 }
