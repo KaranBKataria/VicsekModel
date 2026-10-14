@@ -3,7 +3,7 @@
 
 #include <vector>
 
-int main(int argc, char* argv[])
+int main()
 {
     // Specify simulation configuration
     constexpr int N{ 100 };
