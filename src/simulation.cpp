@@ -6,6 +6,9 @@
 #include <random>
 #include <numbers>
 
+/*
+ * Run full simulation
+*/
 void vm::simulation::run(
     std::vector<vm::ParticleConfiguration2D>& particles,
     const vm::StateSpace2D& grid,
@@ -26,6 +29,9 @@ void vm::simulation::run(
     }
 }
 
+/*
+ * Set up random particle configuration on spatial domain
+*/
 void vm::simulation::setUpConfiguration(
     std::vector<vm::ParticleConfiguration2D>& particles,
     const double xlim,

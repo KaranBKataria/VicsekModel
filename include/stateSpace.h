@@ -30,7 +30,6 @@ namespace vm
                 particle.y,
                 -y_,
                 y_);
-
     }
 }
 
