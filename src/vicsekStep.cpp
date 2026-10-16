@@ -1,16 +1,13 @@
 #include "vicsekStep.h"
 #include "stateSpace.h"
-#include "utils.h"
 
 #include <cmath>
-#include <random>
-#include <numbers>
 
 void vm::positionStep(
-    vm::ParticleConfiguration2D& particle,
-    const vm::StateSpace2D& grid,
-    const double speed,
-    const double del_t
+    vm::ParticleConfiguration2D<double>& particle,
+    const vm::StateSpace2D<double>& grid,
+    double speed,
+    double del_t
     )
 {
     const double speedTime{ speed * del_t };
@@ -23,31 +20,19 @@ void vm::positionStep(
     grid.pbc(particle);
 }
 
-void vm::angleStep(
-    vm::ParticleConfiguration2D& particle,
-    const std::vector<vm::ParticleConfiguration2D>& particles,
-    const double radius
+void vm::positionStep(
+    vm::ParticleConfiguration2D<float>& particle,
+    const vm::StateSpace2D<float>& grid,
+    float speed,
+    float del_t
     )
 {
-    using std::numbers::pi;
+    const float speedTime{ speed * del_t };
 
-    double acc{};
-    int neighbourCount{};
+    // Update particle position
+    particle.x += speedTime * std::cosf(particle.angle);
+    particle.y += speedTime * std::sinf(particle.angle);
 
-    static std::random_device rd{};
-    static std::mt19937 gen(rd());
-    static std::normal_distribution whiteNoise(0.0, 0.1);
-
-    // Naive implementation O(n)
-    for (const auto& [x, y, angle] : particles)
-    {
-        if (std::hypot(x - particle.x, y - particle.y) < radius)
-        {
-            acc += angle;
-            ++neighbourCount;
-        }
-    }
-
-    particle.angle = (acc / static_cast<double>(neighbourCount)) + whiteNoise(gen);
-    particle.angle = vm::utils::wrap(particle.angle, 0.0, 2.0 * pi);
+    // Apply periodic boundary conditions
+    grid.pbc(particle);
 }

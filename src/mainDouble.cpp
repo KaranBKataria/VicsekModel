@@ -15,12 +15,12 @@ int main()
     constexpr double XLIM{ 5.0 };
     constexpr double YLIM{ 5.0 };
 
-    constexpr vm::StateSpace2D GRID{ XLIM, YLIM };
-    std::vector<vm::ParticleConfiguration2D> particles;
+    constexpr vm::StateSpace2D<double> GRID{ XLIM, YLIM };
+    std::vector<vm::ParticleConfiguration2D<double>> particles;
     particles.reserve(N);
 
-    vm::simulation::setUpConfiguration(particles, XLIM, YLIM);
-    vm::simulation::run(particles, GRID, TIMESTEPS, DEL_T, SPEED, RADIUS);
+    vm::simulation::setUpConfiguration<double>(particles, XLIM, YLIM);
+    vm::simulation::run<double>(particles, GRID, TIMESTEPS, DEL_T, SPEED, RADIUS);
 
     return 0;
 }

@@ -5,30 +5,33 @@
 
 namespace vm
 {
+    template <typename T>
     class StateSpace2D
     {
-        // Default is 1.0 x 1.0 grid
-        double x_{ 1.0 };
-        double y_{ 1.0 };
+        public:
+            [[nodiscard]] consteval StateSpace2D() = default;
+            [[nodiscard]] consteval StateSpace2D(const T x, const T y) : x_{x}, y_{y} {}
 
-    public:
-        StateSpace2D() = default;
-        StateSpace2D(const double x, const double y) : x_{x}, y_{y} {}
+            void pbc(vm::ParticleConfiguration2D<T>& particle) const;
 
-        void pbc(vm::ParticleConfiguration2D& particle) const
-        {
-            particle.x = vm::utils::wrap<double>(
-                particle.x,
-                -x_,
-                x_);
-
-            particle.y = vm::utils::wrap<double>(
-                particle.y,
-                -y_,
-                y_);
-        }
+        private:
+            T x_{};
+            T y_{};
     };
-}
 
+    template <typename T>
+    inline void StateSpace2D<T>::pbc(vm::ParticleConfiguration2D<T>& particle) const
+    {
+        particle.x = vm::utils::wrap<T>(
+            particle.x,
+            -x_,
+            x_);
+
+        particle.y = vm::utils::wrap<T>(
+            particle.y,
+            -y_,
+            y_);
+    }
+}
 
 #endif

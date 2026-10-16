@@ -9,13 +9,14 @@
 /*
  * Run full simulation
 */
+template <typename T>
 void vm::simulation::run(
-    std::vector<vm::ParticleConfiguration2D>& particles,
-    const vm::StateSpace2D& grid,
+    std::vector<vm::ParticleConfiguration2D<T>>& particles,
+    const vm::StateSpace2D<T>& grid,
     const int timesteps,
-    const double del_t,
-    const double speed,
-    const double radius)
+    const T del_t,
+    const T speed,
+    const T radius)
 {
     for (int t{1}; t < timesteps + 1; ++t)
     {
@@ -32,18 +33,19 @@ void vm::simulation::run(
 /*
  * Set up random particle configuration on spatial domain
 */
+template <typename T>
 void vm::simulation::setUpConfiguration(
-    std::vector<vm::ParticleConfiguration2D>& particles,
-    const double xlim,
-    const double ylim)
+    std::vector<vm::ParticleConfiguration2D<T>>& particles,
+    const T xlim,
+    const T ylim)
 {
     using std::numbers::pi;
 
     std::random_device rd{};
     std::mt19937 gen(rd());
-    std::uniform_real_distribution spatial_dist_x(-xlim, xlim);
-    std::uniform_real_distribution spatial_dist_y(-ylim, ylim);
-    std::uniform_real_distribution angle_dist(0.0, 2.0 * pi);
+    std::uniform_real_distribution<T> spatial_dist_x(-xlim, xlim);
+    std::uniform_real_distribution<T> spatial_dist_y(-ylim, ylim);
+    std::uniform_real_distribution<T> angle_dist(0.0, 2.0 * pi);
 
     for ([[maybe_unused]] std::size_t i{}; i < particles.capacity(); ++i)
     {
