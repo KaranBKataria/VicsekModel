@@ -1,7 +1,8 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
-namespace vm {
+namespace vm
+{
     template <typename T>
     struct ParticleConfiguration2D
     {
