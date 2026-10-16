@@ -10,12 +10,14 @@
 
 namespace vm
 {
+    // double overload
     void positionStep(
         vm::ParticleConfiguration2D<double>& particle,
         const vm::StateSpace2D<double>& grid,
         double speed,
         double del_t);
 
+    // float overload
     void positionStep(
         vm::ParticleConfiguration2D<float>& particle,
         const vm::StateSpace2D<float>& grid,
