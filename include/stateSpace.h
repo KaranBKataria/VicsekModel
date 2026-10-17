@@ -3,9 +3,12 @@
 
 #include "utils.h"
 
+#include <concepts>
+
 namespace vm
 {
     template <typename T>
+    requires std::floating_point<T>
     class StateSpace2D
     {
         public:
@@ -20,6 +23,7 @@ namespace vm
     };
 
     template <typename T>
+    requires std::floating_point<T>
     inline void StateSpace2D<T>::pbc(vm::ParticleConfiguration2D<T>& particle) const
     {
         particle.x = vm::utils::wrap<T>(

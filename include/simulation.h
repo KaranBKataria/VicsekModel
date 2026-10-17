@@ -5,6 +5,7 @@
 #include "stateSpace.h"
 #include "vicsekStep.h"
 
+#include <concepts>
 #include <iostream>
 #include <random>
 #include <numbers>
@@ -16,6 +17,7 @@ namespace vm::simulation
      * Run full simulation
     */
     template <typename T>
+    requires std::floating_point<T>
     void run(
         std::vector<vm::ParticleConfiguration2D<T>>& particles,
         const vm::StateSpace2D<T>& grid,
@@ -40,6 +42,7 @@ namespace vm::simulation
      * Set up random particle configuration on spatial domain
     */
     template <typename T>
+    requires std::floating_point<T>
     void setUpConfiguration(
         std::vector<vm::ParticleConfiguration2D<T>>& particles,
         const T xlim,

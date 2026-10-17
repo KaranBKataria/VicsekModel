@@ -4,6 +4,7 @@
 #include "particle.h"
 #include "stateSpace.h"
 
+#include <concepts>
 #include <random>
 #include <numbers>
 #include <vector>
@@ -25,6 +26,7 @@ namespace vm
         float del_t);
 
     template <typename T>
+    requires std::floating_point<T>
     void angleStep(
         vm::ParticleConfiguration2D<T>& particle,
         const std::vector<vm::ParticleConfiguration2D<T>>& particles,
