@@ -1,15 +1,16 @@
 #include "simulation.h"
 #include "stateSpace.h"
 
+#include <cstdint>
 #include <vector>
 
 int main()
 {
     // Specify simulation configuration
-    constexpr int N{ 100 };
+    constexpr std::uint16_t N{ 100 };
     constexpr float DEL_T{ 0.05f };   // 0.1s increments
     constexpr float MAX_T{ 600.0f }; // 10 min timescale
-    constexpr int TIMESTEPS{ static_cast<int>(MAX_T / DEL_T) };
+    constexpr std::uint64_t TIMESTEPS{ static_cast<std::uint64_t>(MAX_T / DEL_T) };
     constexpr float SPEED{ 1.0f };
     constexpr float RADIUS{ 1.0f };
     constexpr float XLIM{ 5.0f };

@@ -6,8 +6,8 @@
 void vm::positionStep(
     vm::ParticleConfiguration2D<double>& particle,
     const vm::StateSpace2D<double>& grid,
-    double speed,
-    double del_t
+    const double speed,
+    const double del_t
     )
 {
     const double speedTime{ speed * del_t };
@@ -23,8 +23,8 @@ void vm::positionStep(
 void vm::positionStep(
     vm::ParticleConfiguration2D<float>& particle,
     const vm::StateSpace2D<float>& grid,
-    float speed,
-    float del_t
+    const float speed,
+    const float del_t
     )
 {
     const float speedTime{ speed * del_t };

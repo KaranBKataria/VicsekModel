@@ -4,6 +4,7 @@
 #include "particle.h"
 #include "stateSpace.h"
 
+#include <cstdint>
 #include <concepts>
 #include <random>
 #include <numbers>
@@ -35,7 +36,7 @@ namespace vm
         using std::numbers::pi;
 
         T acc{};
-        int neighbourCount{};
+        std::uint16_t neighbourCount{};
 
         static std::random_device rd{};
         static std::mt19937 gen(rd());

@@ -5,6 +5,7 @@
 #include "stateSpace.h"
 #include "vicsekStep.h"
 
+#include <cstdint>
 #include <concepts>
 #include <iostream>
 #include <random>
@@ -21,12 +22,12 @@ namespace vm::simulation
     void run(
         std::vector<vm::ParticleConfiguration2D<T>>& particles,
         const vm::StateSpace2D<T>& grid,
-        const int timesteps,
+        const std::uint64_t timesteps,
         const T del_t,
         const T speed,
         const T radius)
     {
-        for (int t{1}; t < timesteps + 1; ++t)
+        for (std::uint64_t t{ 1 }; t < timesteps + 1; ++t)
         {
             for (auto& p : particles)
             {
